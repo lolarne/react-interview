@@ -1,0 +1,13 @@
+.App{
+  background-color: #010618;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .cards{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
