@@ -34,28 +34,32 @@ function App() {
 
   return (
     <div className="App">
-      <Filter movies={movies} list={movieList} setList={setMovieList} />
+      <h1>MY MOVIE LIST</h1>
       <div className='pagination'>
-        <div className="formSelectContainer">
-          <div className={`formSelect ${dropDown ? "open" : ""}`}>
-            <label>Affichage par page</label>
-            <input
-              type="button"
-              value={y ? y : "Sélectionner un nombre  ▾"}
-              onClick={() => setDropDown(!dropDown)}
-            />
+        <Filter movies={movies} list={movieList} setList={setMovieList} />
+        <div className="secondContainer">
+          <div className="formSelectContainer">
+            <div className={`formSelect ${dropDown ? "open" : ""}`}>
+              <label>Affichage par page</label>
+              <input
+                type="button"
+                value={displayNbr ? displayNbr : "Sélectionner un nombre  ▾"}
+                onClick={() => setDropDown(!dropDown)}
+              />
+            </div>
+            {dropDown &&
+              <ul className="selectOptions">
+                <li onClick={() => { setY(undefined); setDisplayNbr(undefined); setDropDown(false) }}>Tout</li>
+                {renderOptions(paginationNbr)}
+              </ul>
+            }
           </div>
-          {dropDown &&
-            <ul className="selectOptions">
-              <li onClick={()=> {setY(undefined); setDisplayNbr(undefined); setDropDown(false)}}>Tout</li>
-              {renderOptions(paginationNbr)}
-            </ul>
-          }
+          <div className='btnContainer'>
+            <button onClick={() => { setN(n - displayNbr); setY(y - displayNbr) }} className={n === 0 ? 'noDisplay' : ''}>Précédent</button>
+            <button onClick={() => { setN(n + displayNbr); setY(y + displayNbr) }} className={(y >= movies.length - 1 || y === undefined) ? 'noDisplay' : ''}>Suivant</button>
+          </div>
         </div>
-        <div className='btnContainer'>
-          <button onClick={() => { setN(n - displayNbr); setY(y - displayNbr) }} className={n === 0 ? 'noDisplay' : ''}>Précédent</button>
-          <button onClick={() => { setN(n + displayNbr); setY(y + displayNbr) }} className={(y >= movies.length - 1 || y === undefined) ? 'noDisplay' : ''}>Suivant</button>
-        </div>
+
       </div>
       <div className="cardsContainer">
         <div className='cards'>

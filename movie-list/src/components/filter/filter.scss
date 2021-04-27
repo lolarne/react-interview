@@ -1,18 +1,13 @@
 @import '../../assets/index.scss';
 
 .filter{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     .searchList{
         button{
             font-size: 18px;
             background-color: transparent;
-            border: 2px solid white;
+            border: 2px solid $light-color;
             border-radius: 16px;
-            color: white;
+            color: $light-color;
             padding: 4px 8px;
             margin: 8px;
 

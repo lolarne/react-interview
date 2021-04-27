@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './card.scss';
-import like from '../../images/like-icon.png';
-import dislike from '../../images/dislike-icon.png';
+import like from '../../assets/images/like-icon.png';
+import dislike from '../../assets/images/dislike-icon.png';
 
 const Card = ({ movie }) => {
     const [displayed, setDisplayed] = useState(true);
