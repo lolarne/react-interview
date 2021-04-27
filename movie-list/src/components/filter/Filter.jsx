@@ -37,16 +37,28 @@ const Filter = ({ movies, list, setList }) => {
         return list;
     };
 
-    useEffect(() =>{
-        const newList = [];
+    const unselected = (categorySelected) => {
+        let newCategories = [...searchTerm];
+        newCategories = newCategories.filter(category => category !== categorySelected);
 
-        for(const movie of movies){
-            if(searchTerm.includes(movie.category)){
-                newList.push(movie);
+        setSearchTerm(newCategories);
+    }
+
+    useEffect(() => {
+        if (searchTerm.length !== 0) {
+            const newList = [];
+            for (const movie of movies) {
+                if (searchTerm.includes(movie.category)) {
+                    newList.push(movie);
+                }
             }
+            setList(newList);
+        } else {
+            setList(movies)
         }
-        setList(newList);
-    }, [list]);
+    }, [searchTerm]);
+
+
 
     return (
         <div className='filter'>
@@ -67,8 +79,8 @@ const Filter = ({ movies, list, setList }) => {
                 }
             </div>
             <div>
-                {searchTerm.map((category, categoryIndex)=>(
-                    <button key={categoryIndex}>{category}  X</button>
+                {searchTerm.map((category, categoryIndex) => (
+                    <button onClick={() => unselected(category)} key={categoryIndex}>{category}  X</button>
                 ))}
             </div>
         </div>
