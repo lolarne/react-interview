@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import './card.scss';
 import like from '../../images/like.png';
 import dislike from '../../images/dislike.png';
 
+
 const Card = ({ movie }) => {
+    const [displayed, setDisplayed] = useState(true);
+
     const score = () => {
         const totalVote = movie.likes + movie.dislikes;
         return 100 * movie.likes / totalVote + '%';
     }
 
     return (
-        <div className='card'>
+        <div className={displayed ? 'card' : 'hidden'}>
             <div className='frontSide'>
                 <h1>{movie.title}</h1>
                 <p>{movie.category}</p>
@@ -23,6 +27,10 @@ const Card = ({ movie }) => {
                 <div className="gauge">
                     <div style={{ width: score() }} id="colored"></div>
                 </div>
+                <div className="deleteBtn">
+                    <button onClick={()=> setDisplayed(false)}>X</button>
+                </div>
+                
             </div>
 
         </div>

@@ -1,3 +1,7 @@
+.hidden{
+    display: none;
+}
+
 .card{
     width: 400px;
     height: 170px;
@@ -15,6 +19,8 @@
 
     .backSide{
         display: none;
+        width: 100%;
+
         .like{
             display: flex;
             justify-content: center;
@@ -40,6 +46,28 @@
                 background-color: white;
                 height: 16px;
                 border-radius: 16px;
+            }
+        }
+
+        .deleteBtn{
+            width: 100%;
+            text-align: start;
+
+            button{
+                border: 1px solid white;
+                border-radius: 16px;
+                background-color: transparent;
+                color: white;
+                height: 24px;
+                width: 24px;
+                display: flex;
+                padding: 2px 6px;
+                margin: 16px;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(156, 156, 156);
+                }
             }
         }
     }
