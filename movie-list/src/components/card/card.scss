@@ -29,13 +29,19 @@
 
             p{
                 margin: 32px 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             img{
                 height: 40px;
+                padding: 8px;
+                margin: 0 8px;
 
                 &.clicked{
-                    border: 1px solid white;
+                    border: 2px solid white;
+                    border-radius: 16px;
                 }
             }
         }
@@ -48,7 +54,7 @@
 
             #colored{
                 background-color: white;
-                height: 16px;
+                height: 100%;
                 border-radius: 16px;
             }
         }

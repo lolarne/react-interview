@@ -1,22 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './card.scss';
-import like from '../../images/like.png';
-import dislike from '../../images/dislike.png';
+import like from '../../images/like-icon.png';
+import dislike from '../../images/dislike-icon.png';
 
 
 const Card = ({ movie }) => {
     const [displayed, setDisplayed] = useState(true);
     const [likes, setLikes] = useState(movie.likes);
     const [dislikes, setDislikes] = useState(movie.dislikes);
-    // const [clicked, setClickled] = useState({
-    //     like: false,
-    //     dislike: false
-    // });
-    
+    const [clicked, setClickled] = useState({
+        like: false,
+        dislike: false
+    });
+
     const score = () => {
-        const totalVote = movie.likes + movie.dislikes;
-        return 100 * movie.likes / totalVote + '%';
+        const totalVote = likes + dislikes;
+        return 100 * likes / totalVote + '%';
     }
+
+    const likeClicked = () => {
+        if (!clicked.like) {
+            setClickled({ ...clicked, like: true, dislike: false });
+        }
+    }
+
+    const dislikeClicked = () => {
+        if (!clicked.dislike) {
+            setClickled({ ...clicked, like: false, dislike: true });
+        }
+    }
+
+    useEffect(() => {
+        if (clicked.like) {
+            setLikes(likes + 1);
+            setDislikes(movie.dislikes)
+        };
+        if (clicked.dislike) {
+            setDislikes(dislikes + 1);
+            setLikes(movie.likes)
+        };
+    }, [clicked])
 
     return (
         <div className={displayed ? 'card' : 'hidden'}>
@@ -27,18 +50,23 @@ const Card = ({ movie }) => {
 
             <div className='backSide'>
                 <div className='like'>
-                    <p><img src={like} alt="likes" /> {likes}</p>
-                    <p><img src={dislike} alt="dislikes"/> {dislikes}</p>
+                    <p>
+                        <img src={like} alt="likes" onClick={() => likeClicked()} className={clicked.like ? 'clicked' : ''} />
+                        {likes}
+                    </p>
+                    <p>
+                        <img src={dislike} alt="dislikes" onClick={() => dislikeClicked()} className={clicked.dislike ? 'clicked' : ''} />
+                        {dislikes}
+                    </p>
                 </div>
                 <div className="gauge">
                     <div style={{ width: score() }} id="colored"></div>
                 </div>
                 <div className="deleteBtn">
-                    <button onClick={()=> setDisplayed(false)}>X</button>
+                    <button onClick={() => setDisplayed(false)}>X</button>
                 </div>
-                
-            </div>
 
+            </div>
         </div>
     )
 }
