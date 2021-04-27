@@ -1,14 +1,23 @@
 .filter{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .formSelectContainer{
         position: relative;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 30%;
 
         .formSelect{
             display: flex;
             flex-direction: column;
             margin: 24px 0px;
+
+            label{
+                color: white;
+            }
 
             input{
                 padding: 0px 16px;
@@ -61,10 +70,34 @@
                 }
 
                 &:hover{
-                    background-color: pink;
+                    background-color: #be7c9f;
                     color: white;
                 }
             }
+        }
+    }
+
+    .searchList{
+        button{
+            font-size: 18px;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 16px;
+            color: white;
+            padding: 4px 8px;
+            margin: 8px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .filter{
+        .formSelectContainer{
+            width: 100%;
         }
     }
 }

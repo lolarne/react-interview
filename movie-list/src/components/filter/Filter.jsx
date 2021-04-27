@@ -64,7 +64,7 @@ const Filter = ({ movies, list, setList }) => {
         <div className='filter'>
             <div className="formSelectContainer">
                 <div className={`formSelect ${dropDown ? "open" : ""}`}>
-                    <label className="dropdown">Recherche</label>
+                    <label>Recherche</label>
                     <input
                         type="button"
                         value="Sélectionner une catégorie  ▾"
@@ -78,7 +78,7 @@ const Filter = ({ movies, list, setList }) => {
                     </ul>
                 }
             </div>
-            <div>
+            <div className='searchList'>
                 {searchTerm.map((category, categoryIndex) => (
                     <button onClick={() => unselected(category)} key={categoryIndex}>{category}  X</button>
                 ))}

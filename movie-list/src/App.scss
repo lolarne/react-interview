@@ -1,13 +1,22 @@
 .App{
+  height: 100vh;
   background-color: #010618;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .cards{
-    width: 80%;
+  .cardsContainer{
+    width: 100%;
+    background-color: #010618;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+
+    .cards{
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
   }
 }
