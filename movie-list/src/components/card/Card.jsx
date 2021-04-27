@@ -6,7 +6,13 @@ import dislike from '../../images/dislike.png';
 
 const Card = ({ movie }) => {
     const [displayed, setDisplayed] = useState(true);
-
+    const [likes, setLikes] = useState(movie.likes);
+    const [dislikes, setDislikes] = useState(movie.dislikes);
+    // const [clicked, setClickled] = useState({
+    //     like: false,
+    //     dislike: false
+    // });
+    
     const score = () => {
         const totalVote = movie.likes + movie.dislikes;
         return 100 * movie.likes / totalVote + '%';
@@ -21,8 +27,8 @@ const Card = ({ movie }) => {
 
             <div className='backSide'>
                 <div className='like'>
-                    <p><img src={like} alt="likes" /> {movie.likes}</p>
-                    <p><img src={dislike} alt="dislikes" /> {movie.dislikes}</p>
+                    <p><img src={like} alt="likes" /> {likes}</p>
+                    <p><img src={dislike} alt="dislikes"/> {dislikes}</p>
                 </div>
                 <div className="gauge">
                     <div style={{ width: score() }} id="colored"></div>
