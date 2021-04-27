@@ -1,9 +1,46 @@
+@import './assets/index.scss';
+
 .App{
   height: 100vh;
   background-color: #010618;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .pagination{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .formSelect{
+      input{
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+    }
+
+    .btnContainer{
+      button{
+        border: 2px solid white;
+        border-radius: 16px;
+        background-color: transparent;
+        color: white;
+        padding: 8px;
+        margin: 8px;
+
+        &:hover{
+          cursor: pointer;
+        }
+
+        &.noDisplay{
+          display: none;
+        }
+      }
+    }
+    
+  }
 
   .cardsContainer{
     width: 100%;

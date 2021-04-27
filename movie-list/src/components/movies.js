@@ -31,8 +31,8 @@ export const movies = [
         dislikes: 2
     }, {
         id: '6',
-        title: 'Pulp Fiction',
-        category: 'Thriller',
+        title: 'Harry Potter',
+        category: 'Science-Fiction',
         likes: 11,
         dislikes: 3
     }, {

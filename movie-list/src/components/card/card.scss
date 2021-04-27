@@ -39,6 +39,10 @@
                 padding: 8px;
                 margin: 0 8px;
 
+                &:hover{
+                    cursor: pointer;
+                }
+
                 &.clicked{
                     border: 2px solid white;
                     border-radius: 16px;

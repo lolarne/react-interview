@@ -3,7 +3,6 @@ import './card.scss';
 import like from '../../images/like-icon.png';
 import dislike from '../../images/dislike-icon.png';
 
-
 const Card = ({ movie }) => {
     const [displayed, setDisplayed] = useState(true);
     const [likes, setLikes] = useState(movie.likes);
