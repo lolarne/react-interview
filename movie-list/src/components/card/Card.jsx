@@ -1,4 +1,6 @@
 import './card.scss';
+import like from '../../images/like.png';
+import dislike from '../../images/dislike.png';
 
 const Card = ({ movie }) => {
     const score = () => {
@@ -14,8 +16,10 @@ const Card = ({ movie }) => {
             </div>
 
             <div className='backSide'>
-                <p>Likes: {movie.likes}</p>
-                <p>Dislikes: {movie.dislikes}</p>
+                <div className='like'>
+                    <p><img src={like} alt="likes" /> {movie.likes}</p>
+                    <p><img src={dislike} alt="dislikes" /> {movie.dislikes}</p>
+                </div>
                 <div className="gauge">
                     <div style={{ width: score() }} id="colored"></div>
                 </div>

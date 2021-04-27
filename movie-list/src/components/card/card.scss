@@ -6,6 +6,7 @@
     border-radius: 16px;
     background: linear-gradient(135deg, #be7c9f, #0a1f6e);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
@@ -14,6 +15,33 @@
 
     .backSide{
         display: none;
+        .like{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+
+            p{
+                margin: 32px 16px;
+            }
+
+            img{
+                height: 40px;
+            }
+        }
+
+        .gauge{
+            height: 16px;
+            width: 200px;
+            background-color: rgb(156, 156, 156);
+            border-radius: 16px;
+
+            #colored{
+                background-color: white;
+                height: 16px;
+                border-radius: 16px;
+            }
+        }
     }
 
     &:hover{
@@ -30,20 +58,27 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+    }
+}
 
-            .gauge{
-                height: 16px;
-                width: 200px;
-                background-color: rgb(156, 156, 156);
-                border-radius: 16px;
+@media screen and (max-width: 1000px){
+    .card{
+        width: 80%;
+        height: fit-content;
 
-                #colored{
-                    background-color: white;
-                    height: 16px;
-                    border-radius: 16px;
+        .backSide{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .like{
+                font-size: 24px;
+
+                img{
+                    height: 24px;
                 }
             }
         }
     }
-    
 }
