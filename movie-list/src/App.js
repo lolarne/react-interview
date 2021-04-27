@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [movieList, setMovieList] = useState([...movies]);
-  const [displayNbr, setDisplayNbr] = useState(8);
+  const [displayNbr, setDisplayNbr] = useState(undefined);
   const [n, setN] = useState(0);
   const [y, setY] = useState(displayNbr);
   const paginationNbr = [4, 8, 12];
@@ -41,19 +41,20 @@ function App() {
             <label>Affichage par page</label>
             <input
               type="button"
-              value="Sélectionner un nombre  ▾"
+              value={y ? y : "Sélectionner un nombre  ▾"}
               onClick={() => setDropDown(!dropDown)}
             />
           </div>
           {dropDown &&
             <ul className="selectOptions">
+              <li onClick={()=> {setY(undefined); setDisplayNbr(undefined); setDropDown(false)}}>Tout</li>
               {renderOptions(paginationNbr)}
             </ul>
           }
         </div>
         <div className='btnContainer'>
           <button onClick={() => { setN(n - displayNbr); setY(y - displayNbr) }} className={n === 0 ? 'noDisplay' : ''}>Précédent</button>
-          <button onClick={() => { setN(n + displayNbr); setY(y + displayNbr) }} className={y >= movies.length - 1 ? 'noDisplay' : ''}>Suivant</button>
+          <button onClick={() => { setN(n + displayNbr); setY(y + displayNbr) }} className={(y >= movies.length - 1 || y === undefined) ? 'noDisplay' : ''}>Suivant</button>
         </div>
       </div>
       <div className="cardsContainer">
